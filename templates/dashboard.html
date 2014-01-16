@@ -1,0 +1,12 @@
+{% extends "app.html" %}
+{% block app %}
+<h1>Payment Received vs. Invoiced</h1>
+<div style="font-size:18px;">${{ total_paid }} / ${{ total_invoiced }}</div>
+<div class="clear"></div>
+<br/>
+<br/>
+<h1>Tax Exposure on Payment Received</h1>
+<div class="clear"></div>
+<div style="font-size:18px;">${{ tax_exposure }}</div>
+<div class="clear"></div>
+{% endblock %}

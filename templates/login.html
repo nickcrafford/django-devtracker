@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Devtracker</h1>
+    <div class="clear"></div>
+    <form name="login_form" method="post" style="width: 245px; margin: auto;">
+    <div id="login">
+        {% if errorMsg != "" %}
+          <div style="font-size: 14px; font-weight: bold; color: #C00;">{{ errorMsg }}</div>
+          <br/>
+        {% endif %}
+        <div>
+            <label style="display: inline-block; width:70px; font-size: 14px; font-weight: bold;" for="username">Username</label>
+            <input style="font-size:14px;padding:3px; width: 245px;" type="text" name="username" id="username" />
+        </div>
+        <br/>
+        <div>
+            <label style="display: inline-block; width:70px; font-size: 14px; font-weight: bold;" for="password">Password</label>
+            <input style="font-size:14px;padding:3px; width: 245px;" type="password" name="password" id="password" />
+        </div>
+        <br/>
+        <input type="submit" value="Continue" />
+    </div>
+    </form>
+    <script>
+      document.login_form.username.focus();
+    </script>
+{% endblock %}

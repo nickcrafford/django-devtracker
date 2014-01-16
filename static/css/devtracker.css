@@ -1,0 +1,179 @@
+body {
+    font-family: Helvetica, Arial;
+    font-size: 12px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+input, textarea {
+    padding: 3px;
+    font-size: 13px;
+}
+
+select {
+    padding: 3px;
+    font-size: 13px;
+}
+
+label {
+    font-size: 13px;
+}
+
+.clear {
+    clear: both;
+}
+
+body h1 {
+    margin-top:0px;
+    padding-top: 0px;
+    float: left;
+}
+
+body h1 a {
+    text-decoration: none;
+    color: #000;
+}
+
+#app #toolbar {
+    float: right;
+}
+
+#app #toolbar a {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+#app #navigation {
+    float: left;
+    background-color: #EFEFEF;}
+
+#app #navigation a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top:4px;
+    padding-bottom: 3px;
+    cursor: pointer;
+    float: left;
+    text-align: center;
+}
+
+#app #navigation .selected {
+    font-weight: bold;
+    background-color: #000;
+    color: #FFF;
+}
+
+#app #content {
+    float: left;
+    margin-top:-2px;
+    padding-top: 0px;
+    margin-top: 20px;
+}
+
+#app #content h1 {
+    font-size: 16px;
+}
+
+#app #content #create {
+    /*display: none;*/
+}
+
+#app #content #edit {
+    /*display: none;*/
+}
+
+#app #content #crud_form p {
+    margin-top: 0px;
+    padding-top:0px;
+}
+
+#app #content #crud_form label {
+    display: inline-block;
+    width:   120px;
+}
+
+#app #content #crud_form input[type=text] {
+    width: 250px;
+}
+
+#app #content #crud_form select {
+    /*width: 250px;*/
+}
+
+#app #content #crud_form textarea {
+    width: 250px;
+    height: 75px;
+}
+
+
+#app #content .crudTable {
+    /*display: none;*/
+    margin-top:2px;
+}
+
+#app #content .crudTable th {
+    padding-right:    5px;
+    text-align:       left;
+    background-color: #EFEFEF;
+    padding-top:      3px;
+    padding-bottom:   2px;
+}
+
+#app #content .crudTable tr {
+    cursor: pointer;
+}
+
+#app #content .crudTable td {
+    padding-right:  15px;
+    padding-top:    2px;
+    padding-bottom: 1px;
+}
+
+#app #content #profile p {
+    margin-top: 0px;
+    padding-top:0px;
+}
+
+#app #content #profile label {
+    display: inline-block;
+    width:   100px;
+}
+
+#app #content #profile input[type=text] {
+    width: 250px;
+}
+
+#app #content #profile select {
+    width: 250px;
+}
+
+#app #content #profile textarea {
+    width:  250px;
+    height: 75px;
+}
+
+.errorlist {
+    list-style: none;
+    margin-left: 0px;
+    padding-left: 0px;
+    font-weight: bold;
+    color: #C00;
+}
+
+#message {
+    list-style: none;
+    font-weight: bold;
+    font-size: 14px;
+    color: #008000;
+}
+
+#ui-datepicker-div {
+    display: none;
+}
+
+.readonly {
+    color: #CC0000;
+}

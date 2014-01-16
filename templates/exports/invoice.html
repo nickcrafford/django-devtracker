@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body style="font-size: 12px;">
+<center>
+    <h1 style="font-size: 36px;">I N V O I C E</h1>
+</center>
+<h2 style="font-size: 16px;">{{ invoice.date_sent }}</h2>
+
+<h2 style="margin-bottom: 0px;">Remit to:</h2>
+<div style="text-align: left;">{{ invoice.client.business.name }}</div>
+<div style="text-align: left;">{{ invoice.client.business.address }}</div>
+<div style="text-align: left;">{{ invoice.client.business.city }}, {{ invoice.client.business.state }} {{ invoice.client.business.postal }}</div>
+
+<h2 style="margin-bottom: 0px;">Bill to:</h2>
+<div style="text-align: left;">{{ invoice.client.name }}</div>
+<div style="text-align: left;">{{ invoice.client.address }}</div>
+<div style="text-align: left;">{{ invoice.client.city }}, {{ invoice.client.state }} {{ invoice.client.postal }}</div>
+
+<h2 style="text-align: left; margin-top: 20px; margin-bottom: 20px; font-weight: bold;">Purchase Order # (verbal) For Services Rendered: {{  invoice.first_entry_date }} - {{ invoice.last_entry_date }}</h2>
+
+<table style="border:1px solid #000;padding: 3px;padding-bottom: 0px;">
+    <tr style="font-size: 14px; text-decoration: underline;">
+        <th>Date</th>
+        <th>Project</th>
+        <th>Description</th>
+        <th>Hours</th>
+        <th>Rate/Hr</th>
+        <th>Amount</th>
+    </tr>
+
+    {% for entry in time_entries %}
+    <tr>
+        <td>{{ entry.work_date }}</td>
+        <td>{{ entry.project.name }}</td>
+        <td>{{ entry.description }}</td>
+        <td>{{ entry.num_hours  }}</td>
+        <td>${{ entry.rate.moneys_per_hour }}</td>
+        <td>{{ entry.cost }}</td>
+    </tr>
+    {% endfor %}
+
+    {% if fixed_entries %}
+    <tr height="20">
+        <td colspan="5"></td>
+    </tr>
+    {% endif %}
+
+    {% for entry in fixed_entries %}
+        <tr>
+            <td>{{ entry.work_date }}</td>
+            <td>{{ entry.project.name }}</td>
+            <td>{{ entry.description }}</td>
+            <td></td>
+            <td></td>
+            <td>{{ entry.cost }}</td>
+        </tr>
+    {% endfor %}
+
+    <tr height="20">
+        <td colspan="5"></td>
+    </tr>
+
+    <tr style="font-weight: bold;font-size: 14px;">
+        <td colspan="5">Total:</td>
+        <td>{{ invoice.amount  }}</td>
+    </tr>
+</table>
+<br/>
+<center>
+    <h1 style="position: fixed; bottom: 0px; font-size: 24px; color: #666; font-style: italic; text-align: center;">{{ profile.billing_name }}</h1>
+</center>
+</body>
+</html>

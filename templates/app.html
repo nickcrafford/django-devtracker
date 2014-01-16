@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+    <div id="app">
+        <h1><a href="/home/">Devtracker</a></h1>
+        <div class="clear"></div>
+        <div id="navigation">
+            <a href="/home/"          {% if menu_selected == "home"          %}class="selected"{% endif %}> Home</a>
+            <a href="/invoices/"      {% if menu_selected == "invoices"      %}class="selected"{% endif %}>Invoices</a>
+            <a href="/time-entries/"  {% if menu_selected == "time-entries"  %}class="selected"{% endif %}>Time</a>
+            <a href="/fixed-entries/" {% if menu_selected == "fixed-entries" %}class="selected"{% endif %}>Materials</a>
+            <a href="/projects/"      {% if menu_selected == "projects"      %}class="selected"{% endif %}>Projects</a>
+            <a href="/clients/"       {% if menu_selected == "clients"       %}class="selected"{% endif %}>Clients</a>
+            <a href="/businesses/"    {% if menu_selected == "businesses"    %}class="selected"{% endif %}>Businesses</a>
+            <a href="/rates/"         {% if menu_selected == "rates"         %}class="selected"{% endif %}>Rates</a>
+            <a href="/profile/"       {% if menu_selected == "profile"       %}class="selected"{% endif %}> User Profile</a>
+            <a href="/logout/"        ><b>Log Out</b></a>
+        </div>
+        <div class="clear"></div>
+        <div id="content">
+            {% block app %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

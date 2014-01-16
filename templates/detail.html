@@ -1,0 +1,55 @@
+{% extends "app.html" %}
+{% block app %}
+    <h1>{{ title }} {%  if readonly %} <span class="readonly">(Readonly)</span> {% endif %}</h1>
+    <div class="clear"></div>
+    {% if message != "" %}
+    <div id="message">{{ message }}</div>
+    {% endif %}
+    <br/>
+    <div id="edit">
+        <form name="crud_form" id="crud_form" method="post" action="{{ action }}">
+            {% for field in read_only_fields %}
+                <p>
+                    <label>{{ field.name }}:</label>
+                    <span>{{ field.value }}</span>
+                </p>
+            {% endfor %}
+            {{ form.as_p }}
+    {% if child_tables|length > 0 %}
+    <br/>
+    <div id="child_tables">
+      {% for obj in child_tables %}
+          <h3>Related {{ obj.title }}</h3>
+          <table class="crudTable" cellpadding="0" cellspacing="0">
+              <tr>
+                  <th></th>
+                  {% for column in obj.table.columns %}
+                      <th>{{ column }}</th>
+                  {% endfor %}
+              </tr>
+              {% for row in obj.table.rows %}
+                  <tr height="3"></tr>
+                  <tr href="{{ obj.child_path }}/{{ row.id }}">
+                      <td></td>
+                      {% for value in row %}
+                          <td class="dataRow">{{ value }}</td>
+                      {% endfor %}
+                  </tr>
+              {% endfor %}
+          </table>
+      {% endfor %}
+    </div>
+    {% endif %}
+        <br/>
+        <br/>
+            {%  if not readonly %}
+                <input type="submit" value="Save Changes"/>
+            {%  endif %}
+            {% if include_export_button %}
+                <input type="button" id="exportButton" href="{{ base_path  }}/export/{{ id }}/{{ export_filename }}" value="Export" />
+            {%  endif %}
+        </form>
+    </div>
+    <br/>
+    <br/>
+{% endblock %}

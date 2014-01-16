@@ -1,0 +1,49 @@
+{% extends "app.html" %}
+{% block app %}
+<input type="button" value="Create New {{ verbose_name }}" id="crudNew" />
+{% if has_view_all %}
+{% if view_all_mode %}
+<input type="button" value="View Recent {{ verbose_name_plural }}" id="viewRecent" />
+{% else %}
+<input type="button" value="View All {{ verbose_name_plural }}" id="viewAll" />
+{% endif %}
+{% endif %}
+<br/><br/><br/>
+<form name = "del_form" method="post" action="{{  base_path }}" />
+  <input type="hidden" name="id" value="" />
+</form>
+<table class="crudTable" cellpadding="0" cellspacing="0">
+  {% for table in tables %}
+  {% if table.data.rows|length > 0 %}
+  <tr><td colspan="30"><h1>{{ table.title }}</h1></td></tr>
+  <tr>
+  <th></th>
+  {% for column in table.data.columns %}
+  <th>{{ column }}</th>
+  {% endfor %}
+    <th>Del</th>
+  </tr>
+  <tr height="15"></tr>
+  {% for row in table.data.rows %}
+  <tr height="3"></tr>
+  <tr href="{{  base_path }}/{{ row.id }}">
+    <td></td>
+    {% for value in row %}
+    <td class="dataRow">{{ value }}</td>
+   {% endfor %}
+    <td align="right"><input type="checkbox" value="{{ row.id }}" class="del" /></td>
+  </tr>
+  {% endfor %}
+  {% if table.total %}
+  <tr height="15"></tr>
+  <tr>
+    <td colspan="100" align="right" style=" padding-top: 3px; padding-bottom: 2px;">
+      <b>Total:</b> {{ table.total }}
+    </td>
+  </tr>
+  {% endif %}
+  <tr height="15"></tr>
+  {% endif %}
+  {% endfor %}
+</table>
+{% endblock %}

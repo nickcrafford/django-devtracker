@@ -1,0 +1,8 @@
+{% extends "app.html" %}
+{% block app %}
+<form action="/profile/new/" method="post">
+{{ userForm.as_p }}
+{{ profileForm.as_p }}
+<input type="submit" value="Submit" />
+</form>
+{% endblock %}

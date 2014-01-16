@@ -1,0 +1,2 @@
+xhtml2pdf: http://www.xhtml2pdf.com/
+django-tables: http://elsdoerfer.name/docs/django-tables/
